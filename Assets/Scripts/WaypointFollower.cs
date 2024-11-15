@@ -7,19 +7,18 @@ public class WaypointFollower : MonoBehaviour
     [SerializeField] GameObject[] waypoints;
     int currentWayPointIndex = 0;
 
-    [SerializeField] float speed = 1.0f;
+    [SerializeField] float speed = 1f;
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, waypoints[currentWayPointIndex].transform.position) > .1f) ;
-        
-      
+        if (Vector3.Distance(transform.position, waypoints[currentWayPointIndex].transform.position) > .1f)  
         {
-
+            currentWayPointIndex++;
+            if (currentWayPointIndex >= waypoints.Length)
+            {
+                currentWayPointIndex = 0;
+            }
         }
-
-    }
- 
-    Transform.position //aparently using speed instead of delta is too quick 
-    
+    transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWayPointIndex].transform.position,speed*Time.deltaTime) ; 
+     }     
 }

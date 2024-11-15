@@ -304,10 +304,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19fa4b549c97bb34cb4edf17a57d1598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PointA: {fileID: 430222090}
-  PointB: {fileID: 127632068}
+  waypoints:
+  - {fileID: 430222089}
+  - {fileID: 127632067}
   speed: 0
-  move: 0
 --- !u!1 &430222089
 GameObject:
   m_ObjectHideFlags: 0
