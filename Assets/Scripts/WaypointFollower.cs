@@ -11,7 +11,7 @@ public class WaypointFollower : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(transform.position, waypoints[currentWayPointIndex].transform.position) > .1f)  
+        if (Vector3.Distance(transform.position, waypoints[currentWayPointIndex].transform.position) <.1f)  
         {
             currentWayPointIndex++;
             if (currentWayPointIndex >= waypoints.Length)
@@ -19,6 +19,6 @@ public class WaypointFollower : MonoBehaviour
                 currentWayPointIndex = 0;
             }
         }
-    transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWayPointIndex].transform.position,speed*Time.deltaTime) ; 
+    transform.position = Vector3.MoveTowards(transform.position, waypoints[currentWayPointIndex].transform.position,speed*Time.deltaTime) ; //using delta instead of speed creates a smoother and more controlle dmovement 
      }     
 }
