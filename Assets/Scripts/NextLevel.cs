@@ -1,18 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (other.gameObject.name=="Player")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex +1); // this moves on to the next level acording to the order of the scene manager...i want to go back to spawn point though
+        }
     }
 }
