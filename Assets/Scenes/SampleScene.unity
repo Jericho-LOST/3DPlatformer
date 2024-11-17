@@ -647,7 +647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartMaterial: {fileID: 2100000, guid: 2dc396ea538cfdc4098d188f784ba3cb, type: 2}
   EndMaterial: {fileID: 2100000, guid: a522956dbec52b943b0997455b3bb0fb, type: 2}
-  WaitForSeconds: 0
+  delay: 3
 --- !u!1001 &1218001852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1004,7 +1004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartMaterial: {fileID: 0}
   EndMaterial: {fileID: 0}
-  WaitForSeconds: 0
+  delay: 3
 --- !u!1 &1554784435
 GameObject:
   m_ObjectHideFlags: 0
@@ -1066,7 +1066,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a522956dbec52b943b0997455b3bb0fb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1125,7 +1125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   StartMaterial: {fileID: 2100000, guid: 2dc396ea538cfdc4098d188f784ba3cb, type: 2}
   EndMaterial: {fileID: 2100000, guid: a522956dbec52b943b0997455b3bb0fb, type: 2}
-  WaitForSeconds: 3
+  delay: 3
 --- !u!1001 &2107815647
 PrefabInstance:
   m_ObjectHideFlags: 0
