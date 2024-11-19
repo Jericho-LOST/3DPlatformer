@@ -30,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
         xRotation -= mouseX;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f); //clamps vertical rotation
-        playerCamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f); //rotates camera up and down
+        playerCamera.localRotation = Quaternion.Euler (xRotation, 0f, 0f); //rotates camera up and down
         transform.Rotate(Vector3.up * mouseX); //Rotate player left/right
 
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -42,14 +42,17 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = new Vector3 (moveDirection.x * movementSpeed, rb.velocity.y, moveDirection.z * movementSpeed);
 
 
-        rb.velocity = new Vector3 (horizontalInput* movementSpeed, rb.velocity.y, verticalInput *movementSpeed);
+        rb.velocity = new Vector3 (horizontalInput* movementSpeed, rb.velocity.y, verticalInput *movementSpeed); //
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
             rb.velocity = new Vector3 (rb.velocity.x, jumpForce, rb.velocity.z);
+            Debug.Log(IsGrounded());
+
         }
     }
-    bool IsGrounded()
-    { return Physics.CheckSphere(groundCheck.position, 1f, ground); }
+    bool IsGrounded() { 
+        return Physics.CheckSphere(groundCheck.position, 0.5f, ground); 
+    }
 
 }
