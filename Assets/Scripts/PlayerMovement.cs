@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        //Mouse sensitivity 
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
