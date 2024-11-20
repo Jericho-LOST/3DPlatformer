@@ -2070,7 +2070,7 @@ MonoBehaviour:
   ground:
     serializedVersion: 2
     m_Bits: 1
-  mouseSensitivity: 1108.7
+  mouseSensitivity: 500
   playerCamera: {fileID: 963194228}
 --- !u!54 &1480798354
 Rigidbody:
