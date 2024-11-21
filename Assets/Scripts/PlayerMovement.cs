@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         playerCamera.localRotation = Quaternion.Euler (xRotation, 0f, 0f); //rotates camera up and down
         transform.Rotate(Vector3.up * mouseX); //Rotate player left/right
 
-        float horizontalInput = Input.GetAxis("Horizontal");
+        float horizontalInput = Input.GetAxis("Horizontal"); // character movement 
         float verticalInput = Input.GetAxis("Vertical");
 
 
@@ -54,6 +54,12 @@ public class PlayerMovement : MonoBehaviour
     }
     bool IsGrounded() { 
         return Physics.CheckSphere(groundCheck.position, 0.2f, ground); 
+
+    }
+
+    void Jump()
+    {
+
     }
 
 }
