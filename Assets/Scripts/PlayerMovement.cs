@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
-  [SerializeField]  float movementSpeed = 6f;
+    [SerializeField] float movementSpeed = 6f;
     [SerializeField] float jumpForce = 5f;
 
     [SerializeField] Transform groundCheck;
@@ -13,11 +13,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float mouseSensitivity = 100f;
     float xRotation = 0f;
     [SerializeField] Transform playerCamera; //asigns camera to inspector 
- 
+    [SerializeField] AudioSource jumpSound;
 
     void Start()
     {
-      rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked; //it locks the curser...
 
     }
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f); //clamps vertical rotation
 
-        playerCamera.localRotation = Quaternion.Euler (xRotation, 0f, 0f); //rotates camera up and down
+        playerCamera.localRotation = Quaternion.Euler(xRotation, 0f, 0f); //rotates camera up and down
         transform.Rotate(Vector3.up * mouseX); //Rotate player left/right
 
         float horizontalInput = Input.GetAxis("Horizontal"); // character movement 
@@ -39,27 +39,38 @@ public class PlayerMovement : MonoBehaviour
 
 
         //move in direction the player is facing 
-        Vector3 moveDirection = transform.right * horizontalInput + transform.forward * verticalInput; 
-        rb.velocity = new Vector3 (moveDirection.x * movementSpeed, rb.velocity.y, moveDirection.z * movementSpeed);
+        Vector3 moveDirection = transform.right * horizontalInput + transform.forward * verticalInput;
+        rb.velocity = new Vector3(moveDirection.x * movementSpeed, rb.velocity.y, moveDirection.z * movementSpeed);
 
 
-      //.velocity = new Vector3 (horizontalInput* movementSpeed, rb.velocity.y, verticalInput *movementSpeed); 
+        //.velocity = new Vector3 (horizontalInput* movementSpeed, rb.velocity.y, verticalInput *movementSpeed); 
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
-            rb.velocity = new Vector3 (rb.velocity.x, jumpForce, rb.velocity.z);
-            Debug.Log(IsGrounded());
+            //  rb.velocity = new Vector3 (rb.velocity.x, jumpForce, rb.velocity.z);
+            // Debug.Log(IsGrounded());
+            Jump();
 
         }
     }
-    bool IsGrounded() { 
-        return Physics.CheckSphere(groundCheck.position, 0.2f, ground); 
+    bool IsGrounded() {
+        return Physics.CheckSphere(groundCheck.position, 0.2f, ground);
 
     }
 
     void Jump()
     {
-
+        rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+        jumpSound.Play();
     }
 
-}
+        private void OnCollisionEnter(Collision collision)
+        {
+        if (collision.gameObject.CompareTag("Enemy Head")) 
+        {
+            Destroy(collision.transform.parent.gameObject);
+            Jump();
+        }
+    }
+
+    }
