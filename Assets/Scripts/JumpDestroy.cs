@@ -16,7 +16,7 @@ public class JumpDestroy : MonoBehaviour
                 GetComponent<MeshRenderer>().enabled = false;
                 GetComponent<Rigidbody>().isKinematic = true;
                 GetComponent<PlayerMovement>().enabled = false;
-            Destroy(collision.transform.parent.gameObject); // hopefully this will destroy the parent aswell
+            Destroy(collision.transform.parent.gameObject); // hopefully this will destroy the pare
         }
      
     }
