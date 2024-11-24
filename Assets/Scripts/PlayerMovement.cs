@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
 
         private void OnCollisionEnter(Collision collision)
         {
-        if (collision.gameObject.CompareTag("Enemy Head")) 
+        if (collision.gameObject.CompareTag("Enemy Body")) 
         {
             Destroy(collision.transform.parent.gameObject);
             Jump();
