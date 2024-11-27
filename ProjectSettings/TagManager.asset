@@ -7,7 +7,7 @@ TagManager:
   - Enemy Body
   - 'Disappear '
   - Coin
-  - ground
+  - Wood
   layers:
   - Default
   - TransparentFX

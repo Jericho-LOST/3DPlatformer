@@ -13,7 +13,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float mouseSensitivity = 100f;
     float xRotation = 0f;
     [SerializeField] Transform playerCamera; //asigns camera to inspector 
-    [SerializeField] AudioSource jumpSound;
+    [SerializeField] AudioSource jumpSound; //the first jump sound is grass or the "default sound"
+                                            
+    [SerializeField] AudioSource jumpSoundTwo;
 
     void Start()
     {
@@ -62,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
         jumpSound.Play();
+
+
     }
 
         private void OnCollisionEnter(Collision collision)
@@ -71,6 +75,12 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collision.transform.parent.gameObject);
             Jump();
         }
+
+        if (collision.gameObject.CompareTag("Wood")) // i want it to play a different sound depending on the texture of the object
+        {                                              // hopefully this works lol
+            jumpSoundTwo. Play();
+        }
+
     }
 
     }
