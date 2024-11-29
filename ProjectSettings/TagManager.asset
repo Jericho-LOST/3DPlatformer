@@ -8,6 +8,7 @@ TagManager:
   - 'Disappear '
   - Coin
   - Wood
+  - Texture
   layers:
   - Default
   - TransparentFX
