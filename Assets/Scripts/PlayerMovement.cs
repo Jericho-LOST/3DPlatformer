@@ -16,12 +16,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] AudioSource jumpSound; //the first jump sound is grass or the "default sound"
                                             
     [SerializeField] AudioSource jumpSoundTwo;
+    Animator animator;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked; //it locks the curser...
 
+        animator = GetComponent<Animator>(); //animation component 
     }
 
     void Update()
@@ -52,7 +54,8 @@ public class PlayerMovement : MonoBehaviour
             //  rb.velocity = new Vector3 (rb.velocity.x, jumpForce, rb.velocity.z);
             // Debug.Log(IsGrounded());
             Jump();
-
+            animator.SetBool("IsJumping" ,true);
+            
         }
     }
     bool IsGrounded() {
@@ -74,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Destroy(collision.transform.parent.gameObject);
             Jump();
+
         }
 
         if (collision.gameObject.CompareTag("Wood")) // i want it to play a different sound depending on the texture of the object
